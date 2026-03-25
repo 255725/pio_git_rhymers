@@ -1,16 +1,16 @@
 package edu.kis.vh.nursery;
 
 public class DefaultCountingOutRhymer {
-    private static int CALLCHECKVALUE = -1;
-    private static int MULTIVALUED = 11;
+    private static final int CALLCHECKVALUE = -1;
+    private static final int CAPACITY = 12;
 
-    private int[] numbers = new int[12];
+    private final int[] NUMBERS = new int[CAPACITY];
 
     public int total = -1;
 
     public void countIn(int in) {
         if (!isFull())
-            numbers[++total] = in;
+            NUMBERS[++total] = in;
     }
 
     public boolean callCheck() {
@@ -18,19 +18,19 @@ public class DefaultCountingOutRhymer {
     }
 
     public boolean isFull() {
-        return total == MULTIVALUED;
+        return total == CAPACITY-1;
     }
 
     protected int peekaBoo() {
         if (callCheck())
             return CALLCHECKVALUE;
-        return numbers[total];
+        return NUMBERS[total];
     }
 
     public int countOut() {
         if (callCheck())
             return CALLCHECKVALUE;
-        return numbers[total--];
+        return NUMBERS[total--];
     }
 
 }
