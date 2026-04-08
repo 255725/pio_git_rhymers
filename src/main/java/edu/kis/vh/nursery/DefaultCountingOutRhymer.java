@@ -1,20 +1,21 @@
 package edu.kis.vh.nursery;
 
 public class DefaultCountingOutRhymer {
-    private static final int CALLCHECKVALUE = -1;
+    private static final int EMPTY_INDICATOR = -1;
+    private static final int DEFAULT_RETURN_VALUE = -1;
     private static final int CAPACITY = 12;
 
-    private final int[] NUMBERS = new int[CAPACITY];
+    private final int[] numbers = new int[CAPACITY];
 
-    public int total = -1;
+    public int total = EMPTY_INDICATOR;
 
     public void countIn(int in) {
         if (!isFull())
-            NUMBERS[++total] = in;
+            numbers[++total] = in;
     }
 
     public boolean callCheck() {
-        return total == CALLCHECKVALUE;
+        return total == EMPTY_INDICATOR;
     }
 
     public boolean isFull() {
@@ -23,14 +24,14 @@ public class DefaultCountingOutRhymer {
 
     protected int peekaBoo() {
         if (callCheck())
-            return CALLCHECKVALUE;
-        return NUMBERS[total];
+            return DEFAULT_RETURN_VALUE;
+        return numbers[total];
     }
 
     public int countOut() {
         if (callCheck())
-            return CALLCHECKVALUE;
-        return NUMBERS[total--];
+            return DEFAULT_RETURN_VALUE;
+        return numbers[total--];
     }
 
 }
