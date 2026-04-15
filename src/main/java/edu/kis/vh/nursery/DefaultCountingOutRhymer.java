@@ -7,18 +7,22 @@ public class DefaultCountingOutRhymer {
 
     private final int[] numbers = new int[CAPACITY];
 
-    public int total = EMPTY_INDICATOR;
+    public int getTotal() {
+        return total;
+    }
 
-    public void countIn(int in) {
+    private int total = EMPTY_INDICATOR;
+
+    protected void countIn(int in) {
         if (!isFull())
             numbers[++total] = in;
     }
 
-    public boolean callCheck() {
+    protected boolean callCheck() {
         return total == EMPTY_INDICATOR;
     }
 
-    public boolean isFull() {
+    protected boolean isFull() {
         return total == CAPACITY-1;
     }
 
@@ -28,7 +32,7 @@ public class DefaultCountingOutRhymer {
         return numbers[total];
     }
 
-    public int countOut() {
+    protected int countOut() {
         if (callCheck())
             return DEFAULT_RETURN_VALUE;
         return numbers[total--];
